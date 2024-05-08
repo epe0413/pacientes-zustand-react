@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import Error from './Error';
 
 export default function PatientForm() {
 
@@ -32,10 +33,20 @@ return (
                     type="text" 
                     placeholder="Nombre del Paciente" 
                     {...register('name', {
-                        required: 'El nombre del paciente es obligatorio'
+                        required: 'El nombre del paciente es obligatorio',
+                        // maxLength: {
+                        //     value: 8,
+                        //     message:'Máximo 8 Caracteres'
+                        // }
                     })}
                 />
-                {errors.name?.message}
+                {errors.name && (
+                    <Error>{errors.name?.message?.toString()}</Error>
+                )}
+                {/* {errors.maxLength && (
+                    <Error>{errors.maxLength?.message?.toString()}</Error>
+                )} */}
+                
             </div>
 
             <div className="mb-5">
@@ -86,7 +97,7 @@ return (
 
             <input
                 type="submit"
-                className="bg-indigo-600 w-full p-3 text-white font-bold hover:bg-indigo-700 cursor-pointer transition-colors rounded-md"
+                className="bg-indigo-600 w-full p-2 text-white font-bold hover:bg-indigo-700 cursor-pointer transition-colors rounded-md"
                 value='Guardar Paciente'
             />
         </form> 
