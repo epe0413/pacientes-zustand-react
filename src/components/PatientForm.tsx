@@ -57,8 +57,14 @@ return (
                     id="caretaker"
                     className="w-full p-2  border border-gray-100 rounded"  
                     type="text" 
-                    placeholder="Nombre del Propietario" 
+                    placeholder="Nombre del Propietario"
+                    {...register('caretaker', {
+                        required: 'El Propietario es obligatorio',
+                    })}
                 />
+                {errors.caretaker && (
+                    <Error>{errors.caretaker?.message?.toString()}</Error>
+                )}
             </div>
 
             <div className="mb-5">
@@ -69,8 +75,18 @@ return (
                 id="email"
                 className="w-full p-2  border border-gray-100 rounded"  
                 type="email" 
-                placeholder="Email de Registro" 
+                placeholder="Email de Registro"
+                {...register("email", {
+                    required: "El Email es Obligatorio",
+                    pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Email No Válido'
+                    }
+                })}
             />
+                {errors.email && (
+                    <Error>{errors.email?.message?.toString()}</Error>
+                )}
             </div>
 
             <div className="mb-5">
@@ -81,7 +97,13 @@ return (
                     id="date"
                     className="w-full p-2  border border-gray-100 rounded"  
                     type="date" 
+                    {...register('date', {
+                        required: 'La fecha de alta es obligatoria',
+                    })}
                 />
+                {errors.date && (
+                    <Error>{errors.date?.message?.toString()}</Error>
+                )}
             </div>
             
             <div className="mb-5">
@@ -92,7 +114,13 @@ return (
                     id="symptoms"
                     className="w-full p-2  border border-gray-100 rounded"  
                     placeholder="Síntomas del paciente" 
-                ></textarea>
+                    {...register('symptoms', {
+                        required: 'Los síntomas son obligatorios',
+                    })}
+                />
+                {errors.symptoms && (
+                    <Error>{errors.symptoms?.message?.toString()}</Error>
+                )}
             </div>
 
             <input
