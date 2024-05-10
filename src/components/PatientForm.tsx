@@ -1,12 +1,13 @@
 import { useForm } from 'react-hook-form';
 import Error from './Error';
+import type { DraftPatient } from '../types';
 
 export default function PatientForm() {
 
-    const { register, handleSubmit, formState: {errors} } = useForm()
+    const { register, handleSubmit, formState: {errors} } = useForm<DraftPatient>()
 
-    const registerPatiente = () => {
-        console.log('Nuevo Paciente')
+    const registerPatient = (data: DraftPatient) => {
+        console.log(data)
     }
 
 return (
@@ -21,7 +22,7 @@ return (
         <form 
             className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
             noValidate
-            onSubmit={handleSubmit(registerPatiente)}
+            onSubmit={handleSubmit(registerPatient)}
         >
             <div className="mb-3">
                 <label htmlFor="name" className="text-sm font-bold">
@@ -41,10 +42,10 @@ return (
                     })}
                 />
                 {errors.name && (
-                    <Error>{errors.name?.message?.toString()}</Error>
+                    <Error>{errors.name?.message}</Error>
                 )}
                 {/* {errors.maxLength && (
-                    <Error>{errors.maxLength?.message?.toString()}</Error>
+                    <Error>{errors.maxLength?.message}</Error>
                 )} */}
                 
             </div>
@@ -63,29 +64,29 @@ return (
                     })}
                 />
                 {errors.caretaker && (
-                    <Error>{errors.caretaker?.message?.toString()}</Error>
+                    <Error>{errors.caretaker?.message}</Error>
                 )}
             </div>
 
             <div className="mb-5">
-            <label htmlFor="email" className="text-sm font-bold">
-                Email 
-            </label>
-            <input  
-                id="email"
-                className="w-full p-2  border border-gray-100 rounded"  
-                type="email" 
-                placeholder="Email de Registro"
-                {...register("email", {
-                    required: "El Email es Obligatorio",
-                    pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Email No Válido'
-                    }
-                })}
-            />
+                <label htmlFor="email" className="text-sm font-bold">
+                    Email 
+                </label>
+                <input  
+                    id="email"
+                    className="w-full p-2  border border-gray-100 rounded"  
+                    type="email" 
+                    placeholder="Email de Registro"
+                    {...register("email", {
+                        required: "El Email es Obligatorio",
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: 'Email No Válido'
+                        }
+                    })}
+                />
                 {errors.email && (
-                    <Error>{errors.email?.message?.toString()}</Error>
+                    <Error>{errors.email?.message}</Error>
                 )}
             </div>
 
@@ -102,7 +103,7 @@ return (
                     })}
                 />
                 {errors.date && (
-                    <Error>{errors.date?.message?.toString()}</Error>
+                    <Error>{errors.date?.message}</Error>
                 )}
             </div>
             
@@ -119,7 +120,7 @@ return (
                     })}
                 />
                 {errors.symptoms && (
-                    <Error>{errors.symptoms?.message?.toString()}</Error>
+                    <Error>{errors.symptoms?.message}</Error>
                 )}
             </div>
 
