@@ -6,12 +6,13 @@ Este es el quinto Proyecto del [React y TypeScript - La Guía Completa Creando +
 - Vite + React + TypeScript + Zustand
 
 ## Lo aprendido
-
+- Zustand
 
 ## Para utilizar el proyecto
+```bash
+npm install # Instalar dependencias
 ```
-  npm install
-  npm run dev
+```bash
+npm run dev # Iniciar servidor
 ```
-
 ## Demo
