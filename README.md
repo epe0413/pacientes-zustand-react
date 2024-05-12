@@ -7,6 +7,8 @@ Este es el quinto Proyecto del [React y TypeScript - La Guía Completa Creando +
 
 ## Lo aprendido
 - Zustand
+- react-hook-form
+- react-toastify
 
 ## Para utilizar el proyecto
 ```bash
@@ -16,3 +18,4 @@ npm install # Instalar dependencias
 npm run dev # Iniciar servidor
 ```
 ## Demo
+[Pacientes Zustand](https://pacientes-zustand-react-epe.netlify.app/)
